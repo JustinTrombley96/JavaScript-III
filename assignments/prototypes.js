@@ -16,13 +16,13 @@
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
 function GameObject(attributes) {
-  this.createdAt = attributes.createdAt;
-  this.name = attributes.name;
-  this.dimensions = attributes.dimensions;
+	this.createdAt = attributes.createdAt;
+	this.name = attributes.name;
+	this.dimensions = attributes.dimensions;
 }
 GameObject.prototype.destroy = function () {
-  return `${this.name} was removed from the game.`
-}
+	return `${this.name} was removed from the game.`;
+};
 
 /*
   === CharacterStats ===
@@ -31,14 +31,14 @@ GameObject.prototype.destroy = function () {
   * should inherit destroy() from GameObject's prototype
 */
 function CharacterStats(attributes) {
-  GameObject.call(this, attributes);
-  this.healthPoints = attributes.healthPoints;
+	GameObject.call(this, attributes);
+	this.healthPoints = attributes.healthPoints;
 }
 CharacterStats.prototype = Object.create(GameObject.prototype);
 
 CharacterStats.prototype.takeDamage = function () {
-  return `${this.name} took damage.`
-}
+	return `${this.name} took damage.`;
+};
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
   * team
@@ -49,16 +49,16 @@ CharacterStats.prototype.takeDamage = function () {
   * should inherit takeDamage() from CharacterStats
 */
 function Humanoid(attributes) {
-  CharacterStats.call(this, attributes);
-  this.team = attributes.team;
-  this.weapons = attributes.weapons;
-  this.language = attributes.language;
+	CharacterStats.call(this, attributes);
+	this.team = attributes.team;
+	this.weapons = attributes.weapons;
+	this.language = attributes.language;
 }
 Humanoid.prototype = Object.create(CharacterStats.prototype);
 
 Humanoid.prototype.greet = function () {
-  return `${this.name} offers a greeting in ${this.language}.`
-}
+	return `${this.name} offers a greeting in ${this.language}.`;
+};
 
 /*
  * Inheritance chain: GameObject -> CharacterStats -> Humanoid
@@ -66,69 +66,53 @@ Humanoid.prototype.greet = function () {
  * Instances of CharacterStats should have all of the same properties as GameObject.
  */
 
-// Stretch task: 
-// * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
+// Stretch task:
+// * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.
 // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
 // * Create two new objects, one a villain and one a hero and fight it out with methods!
-
-function Villian(attributes) {
-  Humanoid.call(this, attributes);
-}
-Villian.prototype = Object.create(Humanoid.prototype);
-Villian.prototype.electricity = function () {
-  return `${this.name} electrocutes ${this.name}.`
-}
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
 const mage = new Humanoid({
-  createdAt: new Date(),
-  dimensions: {
-    length: 2,
-    width: 1,
-    height: 1,
-  },
-  healthPoints: 5,
-  name: 'Bruce',
-  team: 'Mage Guild',
-  weapons: [
-    'Staff of Shamalama',
-  ],
-  language: 'Common Tongue',
+	createdAt: new Date(),
+	dimensions: {
+		length: 2,
+		width: 1,
+		height: 1,
+	},
+	healthPoints: 5,
+	name: 'Bruce',
+	team: 'Mage Guild',
+	weapons: ['Staff of Shamalama'],
+	language: 'Common Tongue',
 });
 
 const swordsman = new Humanoid({
-  createdAt: new Date(),
-  dimensions: {
-    length: 2,
-    width: 2,
-    height: 2,
-  },
-  healthPoints: 15,
-  name: 'Sir Mustachio',
-  team: 'The Round Table',
-  weapons: [
-    'Giant Sword',
-    'Shield',
-  ],
-  language: 'Common Tongue',
+	createdAt: new Date(),
+	dimensions: {
+		length: 2,
+		width: 2,
+		height: 2,
+	},
+	healthPoints: 15,
+	name: 'Sir Mustachio',
+	team: 'The Round Table',
+	weapons: ['Giant Sword', 'Shield'],
+	language: 'Common Tongue',
 });
 
 const archer = new Humanoid({
-  createdAt: new Date(),
-  dimensions: {
-    length: 1,
-    width: 2,
-    height: 4,
-  },
-  healthPoints: 10,
-  name: 'Lilith',
-  team: 'Forest Kingdom',
-  weapons: [
-    'Bow',
-    'Dagger',
-  ],
-  language: 'Elvish',
+	createdAt: new Date(),
+	dimensions: {
+		length: 1,
+		width: 2,
+		height: 4,
+	},
+	healthPoints: 10,
+	name: 'Lilith',
+	team: 'Forest Kingdom',
+	weapons: ['Bow', 'Dagger'],
+	language: 'Elvish',
 });
 
 console.log(mage.createdAt); // Today's date
